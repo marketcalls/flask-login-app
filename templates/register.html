@@ -1,0 +1,82 @@
+{% extends "layout.html" %}
+{% block title %}Register{% endblock %}
+
+{% block content %}
+<div class="flex min-h-[70vh] items-center justify-center">
+    <div class="card w-full max-w-md bg-base-100 shadow-xl">
+        <div class="card-body">
+            <h2 class="card-title text-2xl justify-center mb-4">Register</h2>
+            <form method="POST" action="">
+                {{ form.hidden_tag() }}
+                <div class="form-control">
+                    <label class="label">
+                        <span class="label-text">Username</span>
+                    </label>
+                    {{ form.username(class="input input-bordered") }}
+                    {% if form.username.errors %}
+                        {% for error in form.username.errors %}
+                            <span class="text-error text-sm mt-1">{{ error }}</span>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+                <div class="form-control mt-4">
+                    <label class="label">
+                        <span class="label-text">Email</span>
+                    </label>
+                    {{ form.email(class="input input-bordered") }}
+                    {% if form.email.errors %}
+                        {% for error in form.email.errors %}
+                            <span class="text-error text-sm mt-1">{{ error }}</span>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+                <div class="form-control mt-4">
+                    <label class="label">
+                        <span class="label-text">Password</span>
+                    </label>
+                    {{ form.password(class="input input-bordered", id="password") }}
+                    <div class="password-strength-meter mt-2">
+                        <div class="password-strength-label text-sm">Password Strength: <span id="password-strength-text">Not entered</span></div>
+                        <div class="progress h-2 mt-1 bg-gray-200 rounded-full">
+                            <div id="password-strength-meter" class="h-2 rounded-full" style="width: 0%"></div>
+                        </div>
+                    </div>
+                    <div id="password-requirements" class="mt-2 text-sm">
+                        <p>Password must:</p>
+                        <ul class="ml-5 list-disc">
+                            <li id="req-length" class="text-gray-500">Be at least 12 characters long</li>
+                            <li id="req-uppercase" class="text-gray-500">Contain at least one uppercase letter</li>
+                            <li id="req-lowercase" class="text-gray-500">Contain at least one lowercase letter</li>
+                            <li id="req-number" class="text-gray-500">Contain at least one number</li>
+                            <li id="req-special" class="text-gray-500">Contain at least one special character</li>
+                        </ul>
+                    </div>
+                    {% if form.password.errors %}
+                        {% for error in form.password.errors %}
+                            <span class="text-error text-sm mt-1">{{ error }}</span>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+                <div class="form-control mt-4">
+                    <label class="label">
+                        <span class="label-text">Confirm Password</span>
+                    </label>
+                    {{ form.confirm_password(class="input input-bordered") }}
+                    {% if form.confirm_password.errors %}
+                        {% for error in form.confirm_password.errors %}
+                            <span class="text-error text-sm mt-1">{{ error }}</span>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+                <div class="form-control mt-6">
+                    {{ form.submit(class="btn btn-primary text-white") }}
+                </div>
+            </form>
+            <div class="divider">OR</div>
+            <div class="text-center">
+                <p>Already have an account? <a href="{{ url_for('login') }}" class="link link-primary">Login here</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

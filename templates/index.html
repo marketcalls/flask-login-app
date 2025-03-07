@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<div class="hero min-h-[70vh] bg-base-200 rounded-lg">
+    <div class="hero-content text-center">
+        <div class="max-w-md">
+            <h1 class="text-5xl font-bold">Welcome to the Login App</h1>
+            <p class="py-6">A secure login application with dashboard and user profile management.</p>
+            {% if current_user.is_authenticated %}
+            <a href="{{ url_for('dashboard') }}" class="btn btn-primary text-white">Go to Dashboard</a>
+            {% else %}
+            <div class="flex gap-4 justify-center">
+                <a href="{{ url_for('login') }}" class="btn btn-primary text-white">Login</a>
+                <a href="{{ url_for('register') }}" class="btn btn-outline btn-primary">Register</a>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
+    <div class="card bg-base-100 shadow-xl">
+        <div class="card-body">
+            <h2 class="card-title">Secure Authentication</h2>
+            <p>Login with confidence using our secure authentication system with password strength validation.</p>
+        </div>
+    </div>
+    <div class="card bg-base-100 shadow-xl">
+        <div class="card-body">
+            <h2 class="card-title">Personal Dashboard</h2>
+            <p>Manage your account with an intuitive dashboard designed for the best user experience.</p>
+        </div>
+    </div>
+    <div class="card bg-base-100 shadow-xl">
+        <div class="card-body">
+            <h2 class="card-title">User Profile</h2>
+            <p>Update your personal information and password from your profile page at any time.</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

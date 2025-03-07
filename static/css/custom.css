@@ -1,0 +1,68 @@
+/* Custom styles for the login application */
+
+/* Password strength meter styles */
+.password-strength-meter {
+  width: 100%;
+}
+
+.password-strength-meter .progress {
+  height: 8px;
+  background-color: #e9ecef;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+#password-requirements {
+  margin-top: 0.5rem;
+}
+
+/* Improved form focus states */
+.input:focus {
+  border-color: #4338ca;
+  box-shadow: 0 0 0 2px rgba(67, 56, 202, 0.2);
+}
+
+/* Custom animations for alerts */
+.alert {
+  animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Responsive improvements */
+@media (max-width: 640px) {
+  .card {
+    margin: 0.5rem;
+  }
+  
+  .card-body {
+    padding: 1rem;
+  }
+}
+
+/* Accessibility improvements */
+:focus-visible {
+  outline: 2px solid #4338ca;
+  outline-offset: 2px;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}

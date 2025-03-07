@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+{% block title %}Login{% endblock %}
+
+{% block content %}
+<div class="flex min-h-[70vh] items-center justify-center">
+    <div class="card w-full max-w-md bg-base-100 shadow-xl">
+        <div class="card-body">
+            <h2 class="card-title text-2xl justify-center mb-4">Login</h2>
+            <form method="POST" action="">
+                {{ form.hidden_tag() }}
+                <div class="form-control">
+                    <label class="label">
+                        <span class="label-text">Email</span>
+                    </label>
+                    {{ form.email(class="input input-bordered") }}
+                    {% if form.email.errors %}
+                        {% for error in form.email.errors %}
+                            <span class="text-error text-sm mt-1">{{ error }}</span>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+                <div class="form-control mt-4">
+                    <label class="label">
+                        <span class="label-text">Password</span>
+                    </label>
+                    {{ form.password(class="input input-bordered") }}
+                    {% if form.password.errors %}
+                        {% for error in form.password.errors %}
+                            <span class="text-error text-sm mt-1">{{ error }}</span>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+                <div class="form-control mt-4">
+                    <label class="label cursor-pointer justify-start gap-2">
+                        {{ form.remember(class="checkbox") }}
+                        <span class="label-text">Remember Me</span>
+                    </label>
+                </div>
+                <div class="form-control mt-6">
+                    {{ form.submit(class="btn btn-primary text-white") }}
+                </div>
+            </form>
+            <div class="divider">OR</div>
+            <div class="text-center">
+                <p>Don't have an account? <a href="{{ url_for('register') }}" class="link link-primary">Register here</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

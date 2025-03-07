@@ -1,0 +1,12 @@
+Flask
+Flask-Login
+Flask-SQLAlchemy
+Flask-WTF
+email-validator
+flask-bcrypt
+python-dotenv
+Flask-Talisman
+Flask-CORS
+Flask-Limiter
+limits
+Flask-Session
